@@ -8,20 +8,19 @@ def createNumber(i)
 	return (i/3).floor.to_i - 2
 end
 
-def sumUpNumber (i,sum=0)
+def sumNumber (i,sum=0)
 	c = createNumber(i)
 	if c < 0
 		return sum 
 	else
 		sum += c
-		sumUpNumber(c,sum)
+		sumNumber(c,sum)
 	end
 end
 
-
 sum = 0
 arr.each do |i|
-	sum += sumUpNumber(i).to_i
+	sum += sumNumber(i).to_i
 end
 
 puts sum
