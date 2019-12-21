@@ -16,6 +16,7 @@ class Secure_container
 		return false if self.rule2 == false
 		return false if self.rule3 == false
 		return false if self.rule4 == false
+		return false if self.rule5 == false
 		return true
 	end
 
@@ -38,6 +39,18 @@ class Secure_container
 	def rule4
 		@d6>=@d5 and @d5>=@d4 and @d4>=@d3 and @d3>=@d2 and @d2>=@d1
 	end
+
+	# The two adjacent matching digits are not part of a larger group of matching digits.
+	def rule5
+		return true if @d1 == @d2 and @d2 != @d3
+		return true if @d2 == @d3 and @d1 != @d2 and @d3 != @d4
+		return true if @d3 == @d4 and @d2 != @d3 and @d4 != @d5
+		return true if @d4 == @d5 and @d3 != @d4 and @d5 != @d6
+		return true if @d5 == @d6 and @d4 != @d5
+
+		return false
+	end
+
 end
 
 
